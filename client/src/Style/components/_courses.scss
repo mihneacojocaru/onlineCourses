@@ -1,0 +1,57 @@
+.container-courses {
+    padding-top: 1em;
+    margin: 10px;
+}
+
+.cards-container{
+    display: grid;
+    grid-template-columns: 1fr;
+    grid-gap: 1.5em;
+    padding: .5em 0;
+}
+
+.card{
+    cursor: pointer;
+    background-color: $themeOrange;
+    color: white;
+    padding: 1.5em;
+    height: 7em;
+    border-radius: 10px;
+    h2{
+        font-size: 21px;
+    }
+    @extend %clickEffect;
+}
+
+.newCourse{
+    cursor: pointer;
+    background-color: $themeOrangeLight;
+    color: $themeOrangeAccent;
+
+    height: 7em;
+    padding: 2.5em;
+    border-radius: 10px;
+    @extend %clickEffect;
+}
+
+@include mq('sm'){
+    .cards-container{
+        grid-template-columns: repeat(2,1fr);
+        grid-gap: 1.5em;
+    }
+}
+
+@include mq('md'){
+    .cards-container{
+        grid-template-columns: repeat(3,1fr);
+    }
+}
+
+@include mq("lg"){ 
+    
+    .cards-container{
+        grid-template-columns: repeat(4,1fr);
+    }
+
+
+}

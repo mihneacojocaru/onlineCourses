@@ -1,0 +1,9 @@
+@import "utilities/variables", 
+        "utilities/mixins";
+
+@import "base/reset",
+        "base/base";
+
+@import "layout/main", "layout/nav";
+
+@import "./components/mainPage", "./components/courses", './components/courseDetails', "./components/genericTable","./components/addSection","./components/signIn", "./components/courseUpdate";

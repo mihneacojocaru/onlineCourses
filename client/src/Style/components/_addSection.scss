@@ -1,0 +1,45 @@
+.addSectionStyle{
+    margin: 1em;
+    border: 1px solid $font-color-1;
+    border-radius:5px;
+    max-width: 380px;
+    background-color: white;
+    h2{
+        color: $themeOrangeAccent;
+        background-color: $font-color-1;
+        border-radius: 4px 4px 0 0;
+        padding: .5em;
+    }
+
+    form{
+        @include flexy($dir:column);
+        padding: .8em;
+        *{
+            margin: 5px 0;
+            color: $themeOrangeAccent;
+        }
+        input{
+            border-color: $themeOrangeAccent;
+            border: 1px solid;
+            border-radius: 2px;
+            padding: 5px;
+        }
+    }
+    .buttons{
+        margin-bottom: 10px;
+        text-align: center;
+        button{
+            min-width: calc(100% - 1.8em);
+            margin: 5px 0;
+            background-color: $themeOrange;
+            color: white;
+            padding: 5px;
+            border: 1px solid $themeOrangeAccent;
+            border-radius: 2px;
+            @extend %clickEffect;
+            &:nth-child(2){
+                background-color: $themeOrangeAccent;
+            }
+        }
+    }
+}

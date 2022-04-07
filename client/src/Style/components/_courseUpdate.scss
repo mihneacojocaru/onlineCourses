@@ -1,0 +1,32 @@
+
+
+.course__update-container1{
+    @include flexy($dir: column);
+    padding: 1em 0 0;
+    input{
+        padding: 5px;
+        margin: .5em 0;
+    }
+
+    textarea{
+        margin: .5em 0;
+        padding: 5px;
+        height: 400px;
+        width: 100%;
+        resize: vertical;
+    }
+}
+
+.course__update-info2Input{
+    padding: 5px;
+    width: 100%;
+    margin: 10px 0;
+}
+
+.course__update-info2TextArea{
+    margin: 10px 0;
+    width: 100%;
+    height: 300px;
+    padding: 10px;
+    resize: vertical;
+}

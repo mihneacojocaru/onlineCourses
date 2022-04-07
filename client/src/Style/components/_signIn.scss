@@ -1,0 +1,11 @@
+.signIn{
+    & div{
+        margin: 0 auto;   
+       }
+    padding-top: 5em;
+    padding-left: 5px;
+    padding-right: 5px;
+    width: 100%;
+    height: calc(100vh - 52.8px);
+    background-color: $themeOrange;
+}

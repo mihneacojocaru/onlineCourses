@@ -1,0 +1,63 @@
+nav {
+  background-color: $themeOrangeAccent;
+  color: white;
+  position: sticky;
+  top: 0;
+  @include flexy($just: space-between, $dir: row, $align: center);
+  padding: .5em 1em;
+
+  h1{
+    &:hover{
+      cursor: pointer;
+    }
+    &:active{
+      transform: scale(0.98);
+    }
+  }
+
+  .toggle-btn {
+    position: absolute;
+    top: 1.25em;
+    right: 1em;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    width: 55px;
+    height: 40px;
+    border: 5px solid $themeOrange;
+    border-radius: 5px;
+    padding: 3px;
+
+    .bar {
+      height: 3px;
+      width: 100%;
+      background-color: white;
+      border-radius: 10px;
+    }
+
+    &:hover {
+      cursor: pointer;
+      border-color: $themeOrangeAccent;
+    }
+
+    &:active {
+      border-color: $themeOrange;
+    }
+  }
+
+  .nav-items {
+    display: none;
+  }
+
+  .elements > *{
+    padding: 5px;
+    cursor: pointer;
+    color: white;
+  }
+  .active {
+    display: block;
+  }
+
+  @include mq("lg") {
+  }
+}

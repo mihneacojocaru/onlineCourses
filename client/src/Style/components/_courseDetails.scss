@@ -1,0 +1,33 @@
+.course-box{
+    margin: 5px;
+    max-width: 100%;
+
+    .info1 > h5{
+        margin-top: 10px
+    }
+
+    ul{
+        padding-left: 30px;
+        li{
+            padding: 5px 0;
+        }
+    }
+}
+
+@include mq('md'){
+    .course-box{
+        padding: 1em;
+        display: grid;
+        grid-template-areas: "info1 info2";
+        grid-gap: 1em;
+        grid-template-columns: 60% 1fr;
+
+        .info1{
+            grid-area: info1;
+        }
+        
+        .info2{
+            grid-area: info2;
+        }
+    }
+}

@@ -1,0 +1,39 @@
+$breakpoints: (
+  "sm": 100px,
+  "md": 768px,
+  "lg": 1024px,
+);
+
+@import url('https://fonts.googleapis.com/css2?family=Montserrat&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Grandstander:wght@500&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Sansita+Swashed:wght@600&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;900&display=swap');
+
+$font-stack-primary: "Roboto", sans-serif;
+$font-sidebar: Grandstander, sans-serif;
+$font-logo: "Sansita Swashed", sans-serif;
+
+$element-width: 90%;  
+$max-element-width: 300px;
+
+//Colors
+
+
+$primary-background: #eff2f3;
+$secondary-background: #d7dcdd;
+$white-background: #fff;
+
+$font-color-1: #f0f0f0;
+$font-color-2: #7b868a;
+$font-color-3: #525e61;
+$font-color-4: #3b4446;
+$font-color-5: #166a8f;
+$font-color-6: #3997BD;
+$font-color-7: #7b868a;
+$font-color-8: #2dbe60;
+$font-color-9: gold;
+
+$themeOrange: #7B6799;
+$themeOrangeAccent: #60517A;
+$themeOrangeLight: #DCD8E4;
+

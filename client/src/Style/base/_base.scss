@@ -1,0 +1,34 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+h1{
+    margin: 0;
+}
+
+html,body{
+    position: relative;
+}
+
+body{
+    //display: grid;
+    font-family: $font-stack-primary;
+
+    // grid-template-rows: 82px 1fr;
+    // grid-template-columns: 360px 1fr;
+
+    // @include mq("sm"){
+    //     grid-template-areas: "nav nav"
+    //                         "sidebar main"  ;
+    // }
+}
+
+a{
+    text-decoration: none;
+}
+
+li{
+    list-style: none;
+}

@@ -1,0 +1,54 @@
+.container {
+  padding: 1em;
+  margin: 10px;
+  @include flexy($align: center, $dir: column);
+}
+
+.fcnBtn{
+  @include flexy();
+  background-color: $themeOrangeLight;
+  padding: .5em;
+  position: sticky;
+  .navBtn{
+      margin: .3em;
+      background-color: $themeOrange;
+      color: white;
+      padding: .5em;
+      border-radius: 10px;
+      h2{
+          font-size: 21px;
+      }
+      text-align: center;
+      @extend %clickEffect;
+  }
+
+  .returnBtn{
+    background-color: white;
+    border: 1px solid $themeOrange;
+    color: $themeOrange;
+  }
+}
+
+.card-- {
+  margin: 1em;
+  background-color: $themeOrange;
+  color: white;
+  padding: 1.5em;
+  width: 15em;
+  border-radius: 10px;
+  h2 {
+    font-size: 21px;
+  }
+  text-align: center;
+  @extend %clickEffect;
+}
+
+@include mq("md") {
+  .container {
+    justify-content: center;
+    flex-direction: row;
+  }
+  .card--{
+      width: 20em;
+  }
+}
