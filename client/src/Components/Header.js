@@ -13,11 +13,12 @@ const Header = () => {
     history.push("/");
   };
 
-  useEffect(() => {
-    if (username) {
-      Cookies.set("authentificatedUser", JSON.stringify(username));
-    }
-  }, []);
+  // useEffect(() => {
+  //   if (username) {
+  //     Cookies.set("authentificatedUser", JSON.stringify(username));
+  //   }
+  // }, []);
+
   return (
     <nav>
       <h1 onClick={onClick} className="homeLink">

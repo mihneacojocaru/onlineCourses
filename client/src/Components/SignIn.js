@@ -1,6 +1,7 @@
 import React, { useContext, useEffect, useState } from "react";
 import { useHistory } from "react-router-dom";
 import Data from "../ApiData/data";
+import Cookies from "js-cookie";
 
 import { Context } from "../Context";
 
@@ -21,17 +22,18 @@ const SignIn = () => {
     const d = new Data();
     try {
       const auth = await d.authentificate({ email, password });
-      console.log(auth);
       if (auth != "Email or Password is invalid") {
         setEmail(auth.email);
         setUser(auth);
+        Cookies.set("authentificatedUser", JSON.stringify(auth));
         returnHome();
-      } else {
-      }
+      } 
     } catch (e) {
       console.log(e);
     }
   };
+
+  
 
   const changeHandler = (e) => {
     let obj = e.target;

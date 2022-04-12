@@ -9,8 +9,8 @@ import protect from '../middleware/authentification.js';
 const router = express.Router();
 
 router.route('/')
-.get(protect,getAllCourses,errorHandler)
-.post(createCourse,errorHandler);
+.get(getAllCourses,errorHandler)
+.post(protect,createCourse,errorHandler);
 
 router.route('/:id')
 .get(getCourseById,errorHandler)

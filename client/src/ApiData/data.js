@@ -38,7 +38,7 @@ export default class Data {
 
   async getOneCourse(id) {
     try {
-      const resp = await this.api(`http://localhost:3000/api/v1/course/${id}`);
+      const resp = await this.api(`http://localhost:3350/api/v1/courseDetails/${id}`);
       if (resp.status === 200) {
         return resp.json();
       }
@@ -96,7 +96,7 @@ export default class Data {
   async newCourse(body) {
     try {
       const resp = await this.api(
-        "http://localhost:3000/api/v1/newCourse",
+        "http://localhost:3350/api/v1/courses",
         "POST",
         body
       );
@@ -113,7 +113,7 @@ export default class Data {
   async deleteCourse(id) {
     try {
       const resp = await this.api(
-        `http://localhost:3000/api/v1/delCourse/${id}`,
+        `http://localhost:3350/api/v1/courses/${id}`,
         "DELETE"
       );
       if (resp.status === 202) {
