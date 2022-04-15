@@ -48,6 +48,8 @@ const CourseDetails = () => {
     getDetails();
   }, []);
 
+  //if(!user) history.push('/signIn');
+
   return (
     <>
       <div className="fcnBtn">

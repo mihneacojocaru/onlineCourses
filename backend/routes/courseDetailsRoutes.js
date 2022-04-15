@@ -4,6 +4,8 @@ import { errorHandler } from '../middleware/errorMiddleware.js';
 
 import { addCourseDetails, getCourseDetailsById, updateCourseDetails } from '../controllers/courseDetailsController.js';
 
+import protect from '../middleware/authentification.js';
+
 const router = express.Router();
 
 router.route('/')
@@ -11,6 +13,6 @@ router.route('/')
 
 router.route('/:id')
 .get(getCourseDetailsById,errorHandler)
-.put(updateCourseDetails,errorHandler);
+.put(protect,updateCourseDetails,errorHandler);
 
 export default router;

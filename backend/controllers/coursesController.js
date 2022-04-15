@@ -15,8 +15,12 @@ const getAllCourses = asyncHandler(async (req,res)=>{
 
 const createCourse = asyncHandler(async (req,res)=>{
     const {course_name,department} = req.body;
+    const {title,professor,description,estimated_time,materials_needed} = req.body;
+
     const postCourse = await db.models.Courses.create({course_name,department});
-    return res.status(201).json(postCourse);
+    const course_id = postCourse.id;
+    const newDetails = await db.models.CourseDetails.create({title,professor,description,estimated_time,materials_needed,course_id});
+    return res.status(201).json([postCourse,newDetails]);
 });
 
 const getCourseById = asyncHandler(async (req,res)=>{

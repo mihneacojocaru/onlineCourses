@@ -1,4 +1,11 @@
+import Cookies from "js-cookie";
+
 export default class Data {
+
+  constructor(){
+    this.user = JSON.parse(Cookies.get("authentificatedUser"));
+  }
+
   api(path, method = "GET", body = null, requiresAuth=false, token=null) {
     
     const options = {
@@ -15,7 +22,6 @@ export default class Data {
 
     if(requiresAuth){
       options.headers['Authorization'] = `Bearer ${token}`;
-
     }
 
     return fetch(path, options);
@@ -25,7 +31,7 @@ export default class Data {
 
   async getCourses() {
     try {
-      const response = await this.api("http://localhost:3350/api/v1/courses");
+      const response = await this.api("http://localhost:3000/api/v1/courses");
       if (response.status === 200) {
         return response.json();
       } else {
@@ -38,7 +44,7 @@ export default class Data {
 
   async getOneCourse(id) {
     try {
-      const resp = await this.api(`http://localhost:3350/api/v1/courseDetails/${id}`);
+      const resp = await this.api(`http://localhost:3000/api/v1/courses/${id}`);
       if (resp.status === 200) {
         return resp.json();
       }
@@ -50,7 +56,7 @@ export default class Data {
   async getDetails(id) {
     try {
       const response = await this.api(
-        `http://localhost:3350/api/v1/courseDetails/${id}`
+        `http://localhost:3000/api/v1/courseDetails/${id}`
       );
       if (response.status === 200) {
         return response.json();
@@ -65,9 +71,11 @@ export default class Data {
   async updateCourseDetails(id, body) {
     try {
       const resp = await this.api(
-        `http://localhost:3350/api/v1/courseDetails/${id}`,
+        `http://localhost:3000/api/v1/courseDetails/${id}`,
         "PUT",
-        body
+        body,
+        true,
+        this.user.token
       );
       if (resp.status === 200) {
         return resp.json();
@@ -79,9 +87,11 @@ export default class Data {
   async updateCourse(id, body) {
     try {
       const resp = await this.api(
-        `http://localhost:3350/api/v1/courses/${id}`,
+        `http://localhost:3000/api/v1/courses/${id}`,
         "PUT",
-        body
+        body,
+        true,
+        this.user.token
       );
       if (resp.status === 200) {
         return resp.json();
@@ -96,9 +106,11 @@ export default class Data {
   async newCourse(body) {
     try {
       const resp = await this.api(
-        "http://localhost:3350/api/v1/courses",
+        "http://localhost:3000/api/v1/courses",
         "POST",
-        body
+        body,
+        true,
+        this.user.token
       );
       if (resp.status === 201) {
         return resp.json();
@@ -113,8 +125,11 @@ export default class Data {
   async deleteCourse(id) {
     try {
       const resp = await this.api(
-        `http://localhost:3350/api/v1/courses/${id}`,
-        "DELETE"
+        `http://localhost:3000/api/v1/courses/${id}`,
+        "DELETE",
+        null,
+        true,
+        this.user.token
       );
       if (resp.status === 202) {
         return resp.json();
@@ -129,7 +144,7 @@ export default class Data {
   async authentificate(body) {
     try {
       const resp = await this.api(
-        "http://localhost:3350/api/v1/users/login",
+        "http://localhost:3000/api/v1/users/login",
         "POST",
         body
       );
@@ -147,7 +162,15 @@ export default class Data {
   //+++ Sign Up
 
   async signUp(obj){
-    
+    try {
+      const resp = await this.api('http://localhost:3000/api/v1/users/','POST',obj);
+
+      return resp.json();
+
+
+    } catch (error) {
+      throw new Error(error);
+    }
 
   }
 

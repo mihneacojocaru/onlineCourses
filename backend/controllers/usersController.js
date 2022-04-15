@@ -19,8 +19,11 @@ const getAllUsers = asyncHandler(async (req, res) => {
 const registerUser = asyncHandler(async (req,res)=>{
   const {username,email,password,confirmedPassword} = req.body;
 
-  const userExists = await db.models.Users.findOne({email})
+  const userExists = await db.models.Users.findOne({
+    where: { email: email }
+  });
 
+  console.log(userExists);
   if(userExists){
     res.status(400)
     throw new Error('User already exists');
@@ -65,11 +68,14 @@ const postNewUser = asyncHandler(async (req, res) => {
 const authentificateUser = asyncHandler(async (req, res) => {
   const {email,password} = req.body;
 
-  const user = await db.models.Users.findOne({email});
+  const user = await db.models.Users.findOne({where:{email:email}});
+
 
   if(user){
     const authentificated = bcrypt
     .compareSync(password, user.confirmedPassword);
+
+    console.log(authentificated);
 
     if(authentificated){
       console.log(`Authentification successful for username: ${user.email}`);
@@ -79,6 +85,9 @@ const authentificateUser = asyncHandler(async (req, res) => {
         email: user.email,
         token: generateToken(user.id)
       })
+    } else{
+      res.status(401)
+      throw new Error('Invalid email or password')
     }
   }else{
     res.status(401)

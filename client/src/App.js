@@ -7,6 +7,8 @@ import CourseUpdate from "./Components/CourseUpdate";
 import NewCourse from "./Components/NewCourse";
 import "./Style/App.scss";
 
+import PrivateRouteCourseDetails from "./Components/PrivateRouteCourseDetails";
+
 import { UserProvider } from "./Context";
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 
@@ -28,9 +30,10 @@ function App() {
           <Route path="/newCourse">
             <NewCourse />
           </Route>
-          <Route path="/course-details/:id">
+          <PrivateRouteCourseDetails  path="/course-details/:id"><CourseDetails/></PrivateRouteCourseDetails>
+          {/* <Route path="/course-details/:id">
             <CourseDetails />
-          </Route>
+          </Route> */}
           <Route path="/course-update/:id">
             <CourseUpdate />
           </Route>

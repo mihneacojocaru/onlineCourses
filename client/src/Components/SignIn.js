@@ -21,24 +21,34 @@ const SignIn = () => {
   const authentificate = async () => {
     const d = new Data();
     try {
-      const auth = await d.authentificate({ email, password });
-      if (auth != "Email or Password is invalid") {
-        setEmail(auth.email);
-        setUser(auth);
-        Cookies.set("authentificatedUser", JSON.stringify(auth));
-        returnHome();
-      } 
+      if (email) {
+        const auth = await d.authentificate({ email, password });
+        if (auth != "Username or Password is invalid") {
+          setEmail(auth.email);
+          setUser(auth);
+          Cookies.set("authentificatedUser", JSON.stringify(auth));
+          returnHome();
+        } else {
+          alert(auth);
+        }
+      }else{
+        alert('Username or Password is invalid')
+      }
     } catch (e) {
       console.log(e);
     }
   };
 
-  
+  const regExVerifyer = (email) => {
+    const emailRegEx = /\S+@\S+\.\S+/;
+    return emailRegEx.test(String(email).toLowerCase());
+  };
 
   const changeHandler = (e) => {
     let obj = e.target;
     if (obj.classList.contains("username")) {
-      setEmail(obj.value);
+      if (regExVerifyer(obj.value)) setEmail(obj.value);
+      else setEmail(false);
     } else if (obj.classList.contains("password")) {
       setPassword(obj.value);
     }

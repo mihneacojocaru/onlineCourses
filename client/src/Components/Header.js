@@ -22,7 +22,7 @@ const Header = () => {
   return (
     <nav>
       <h1 onClick={onClick} className="homeLink">
-        Enrolment&trade;
+        OnlineCourses&trade;
       </h1>
       <div className="elements">
         {username ? (

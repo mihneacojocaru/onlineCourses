@@ -14,8 +14,8 @@ router.route('/')
 
 router.route('/:id')
 .get(getCourseById,errorHandler)
-.put(updateCourse,errorHandler)
-.delete(deleteCourseById,errorHandler);
+.put(protect,updateCourse,errorHandler)
+.delete(protect,deleteCourseById,errorHandler);
 
 
 export default router;
