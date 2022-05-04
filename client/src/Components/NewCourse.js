@@ -1,9 +1,13 @@
-import React,{useState,useEffect} from "react";
+import React,{useState,useEffect, useContext} from "react";
 import { useHistory, Link, useParams } from "react-router-dom";
+
+import { Context } from "../Context";
 
 import Data from "../ApiData/data";
 
 const NewCourse = () => {
+
+  const [user,setUser] = useContext(Context);
 
   const [courseName, setCourseName] = useState('');
   const [department, setDepartment] = useState('');
@@ -33,7 +37,7 @@ const NewCourse = () => {
     obj.materials_needed = materialsNeeded;
 
     let data = new Data();
-    await data.newCourse(obj);
+    await data.newCourse(obj,user.token);
     goBack();
   }
 

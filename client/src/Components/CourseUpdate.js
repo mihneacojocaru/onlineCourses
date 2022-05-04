@@ -1,9 +1,12 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useState, useContext } from "react";
 import { useHistory, Link, useParams } from "react-router-dom";
+import { Context } from "../Context";
+
 import Data from '../ApiData/data';
 
-
 const CourseUpdate = () => {
+
+  const [user, setUser] = useContext(Context);
 
   const [course, setCourse] = useState([]);
   const [details, setDetails] = useState({});
@@ -71,14 +74,14 @@ const CourseUpdate = () => {
 
   const submitFunction = async ()=>{
     const data = new Data();
-    await data.updateCourseDetails(id,details);
-    await data.updateCourse(id,course);
+    await data.updateCourseDetails(id,details, user.token);
+    await data.updateCourse(id,course,user.token);
     goBack();
   } 
 
   const delCourse = async () => {
     const data = new Data();
-    await data.deleteCourse(id);
+    await data.deleteCourse(id,user.token);
     goHome();
   }
 

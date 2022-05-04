@@ -2,10 +2,6 @@ import Cookies from "js-cookie";
 
 export default class Data {
 
-  constructor(){
-    this.user = JSON.parse(Cookies.get("authentificatedUser"));
-  }
-
   api(path, method = "GET", body = null, requiresAuth=false, token=null) {
     
     const options = {
@@ -31,7 +27,7 @@ export default class Data {
 
   async getCourses() {
     try {
-      const response = await this.api("http://localhost:3000/api/v1/courses");
+      const response = await this.api("/api/v1/courses");
       if (response.status === 200) {
         return response.json();
       } else {
@@ -44,7 +40,7 @@ export default class Data {
 
   async getOneCourse(id) {
     try {
-      const resp = await this.api(`http://localhost:3000/api/v1/courses/${id}`);
+      const resp = await this.api(`/api/v1/courses/${id}`);
       if (resp.status === 200) {
         return resp.json();
       }
@@ -56,7 +52,7 @@ export default class Data {
   async getDetails(id) {
     try {
       const response = await this.api(
-        `http://localhost:3000/api/v1/courseDetails/${id}`
+        `/api/v1/courseDetails/${id}`
       );
       if (response.status === 200) {
         return response.json();
@@ -68,14 +64,14 @@ export default class Data {
 
   //+++ PUT
 
-  async updateCourseDetails(id, body) {
+  async updateCourseDetails(id, body, token) {
     try {
       const resp = await this.api(
-        `http://localhost:3000/api/v1/courseDetails/${id}`,
+        `/api/v1/courseDetails/${id}`,
         "PUT",
         body,
         true,
-        this.user.token
+        token
       );
       if (resp.status === 200) {
         return resp.json();
@@ -84,14 +80,14 @@ export default class Data {
       return Promise.reject(e);
     }
   }
-  async updateCourse(id, body) {
+  async updateCourse(id, body, token) {
     try {
       const resp = await this.api(
-        `http://localhost:3000/api/v1/courses/${id}`,
+        `/api/v1/courses/${id}`,
         "PUT",
         body,
         true,
-        this.user.token
+        token
       );
       if (resp.status === 200) {
         return resp.json();
@@ -103,14 +99,14 @@ export default class Data {
 
   //+++
 
-  async newCourse(body) {
+  async newCourse(body, token) {
     try {
       const resp = await this.api(
-        "http://localhost:3000/api/v1/courses",
+        "/api/v1/courses",
         "POST",
         body,
         true,
-        this.user.token
+        token
       );
       if (resp.status === 201) {
         return resp.json();
@@ -122,14 +118,14 @@ export default class Data {
 
   //+++ DELETE
 
-  async deleteCourse(id) {
+  async deleteCourse(id, token) {
     try {
       const resp = await this.api(
-        `http://localhost:3000/api/v1/courses/${id}`,
+        `/api/v1/courses/${id}`,
         "DELETE",
         null,
         true,
-        this.user.token
+        token
       );
       if (resp.status === 202) {
         return resp.json();
@@ -144,7 +140,7 @@ export default class Data {
   async authentificate(body) {
     try {
       const resp = await this.api(
-        "http://localhost:3000/api/v1/users/login",
+        "/api/v1/users/login",
         "POST",
         body
       );
@@ -163,7 +159,7 @@ export default class Data {
 
   async signUp(obj){
     try {
-      const resp = await this.api('http://localhost:3000/api/v1/users/','POST',obj);
+      const resp = await this.api('/api/v1/users/','POST',obj);
 
       return resp.json();
 
